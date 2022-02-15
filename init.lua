@@ -5,10 +5,25 @@ local S = minetest.get_translator(minetest.get_current_modname())
 
 -- the item config
 
-minetest.register_craftitem("poop_mod:poop",{
+minetest.register_node("poop_mod:poop",{
     description = S("Poop"),
+	drawtype = "mesh",
+	mesh = "POOP.obj",
+	tiles = {"poopimageitem.png"},
+	walkable = true,
+	selection_box = {
+			type = "fixed",
+			fixed = {-0.4, -0.5, -0.4, 0.4, -0.25, 0.4},
+		},
+	collision_box = {
+			type = "fixed",
+			fixed = {-0.4, -0.5, -0.4, 0.4, 0.1, 0.4},
+	},
+	paramtype = "light",
+	sunlight_propagates = true,
+	paramtype2 = "facedir",
 	inventory_image = "poopitem.png",
-	groups = {poop = 1, flammable = 1},
+	groups = {poop = 1, flammable = 1, oddly_breakable_by_hand = 2},
 	on_use = minetest.item_eat(-9, "poop_mod:poop"),
 })
 
